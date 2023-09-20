@@ -1,0 +1,16 @@
+{
+    "name": "fixtures",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/fixtures/src",
+    "projectType": "library",
+    "tags": [],
+    "targets": {
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["libs/fixtures/**/*.{ts,tsx,js,jsx}"]
+            }
+        }
+    }
+}
