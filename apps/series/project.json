@@ -1,0 +1,68 @@
+{
+    "name": "series",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/series",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/next:build",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "outputPath": "dist/apps/series"
+            },
+            "configurations": {
+                "development": {
+                    "outputPath": "apps/series"
+                },
+                "production": {}
+            }
+        },
+        "serve": {
+            "executor": "@nx/next:server",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "series:build",
+                "dev": true
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "series:build:development",
+                    "dev": true
+                },
+                "production": {
+                    "buildTarget": "series:build:production",
+                    "dev": false
+                }
+            }
+        },
+        "export": {
+            "executor": "@nx/next:export",
+            "options": {
+                "buildTarget": "series:build:production"
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "apps/series/jest.config.ts",
+                "passWithNoTests": true
+            },
+            "configurations": {
+                "ci": {
+                    "ci": true,
+                    "codeCoverage": true
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/series/**/*.{ts,tsx,js,jsx}"]
+            }
+        }
+    },
+    "tags": []
+}

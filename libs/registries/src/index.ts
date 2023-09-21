@@ -1,2 +1,1 @@
-export * from './lib/firebase'
-export * from './lib/styledComponentRegistry'
+export * from './lib'

@@ -10,7 +10,7 @@ import { appRoutes } from '@libs/utils'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 
-const PublicHeader = ({ children }: { children: ReactNode }) => {
+export const PublicHeader = ({ children }: { children: ReactNode }) => {
     const pathname = usePathname()
     const isOnAuthPages = !![appRoutes.SIGN_IN, appRoutes.SIGN_UP].includes(
         pathname as appRoutes
@@ -36,5 +36,3 @@ const PublicHeader = ({ children }: { children: ReactNode }) => {
         </Header>
     )
 }
-
-export default PublicHeader

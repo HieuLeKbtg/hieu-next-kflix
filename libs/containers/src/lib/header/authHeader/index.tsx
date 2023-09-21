@@ -10,7 +10,7 @@ import {
 import LeftNavHeader from './LeftNavHeader'
 import RightNavHeader from './RightNavHeader'
 
-const AuthHeader = () => {
+export const AuthHeader = () => {
     return (
         <Header src='joker1'>
             <>
@@ -35,5 +35,3 @@ const AuthHeader = () => {
         </Header>
     )
 }
-
-export default AuthHeader

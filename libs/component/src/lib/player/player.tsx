@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components/macro'
 
@@ -97,7 +97,7 @@ export const PlayerVideo = ({ src }) => {
     const { showPlayer, setShowPlayer } = useContext(PlayerContext)
 
     return showPlayer
-        ? ReactDOM.createPortal(
+        ? (ReactDOM.createPortal(
               <Overlay
                   onClick={() => setShowPlayer(false)}
                   data-testid='player'
@@ -114,7 +114,7 @@ export const PlayerVideo = ({ src }) => {
                   </Inner>
               </Overlay>,
               document.body
-          )
+          ) as JSX.Element)
         : null
 }
 

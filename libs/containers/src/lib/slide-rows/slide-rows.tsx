@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
 import {
     Card,
     CardEntities,
@@ -14,10 +13,10 @@ import {
     Player,
     PlayerButton,
     PlayerVideo
-} from 'src/components'
-import { seriesServices } from 'src/services'
-import { filmServices } from 'src/services/FilmServices'
-import { ContentStates, ImageConfigs, SearchStates } from 'src/types'
+} from '@libs/component'
+import { filmServices, seriesServices } from '@libs/services'
+import { ContentStates, ImageConfigs, SearchStates } from '@libs/types'
+import { useEffect, useRef, useState } from 'react'
 
 type SlideRowsProps = {
     category: 'series' | 'films' | 'multi'
@@ -40,8 +39,8 @@ export const SlideRows = (props: SlideRowsProps) => {
     const [item, setItem] = useState<ContentStates>(DEFAULT_ITEM)
 
     const [videoKey, setVideoKey] = useState<string>('')
-    const cardFeatureRef = useRef(null)
-    const slideItemRef = useRef(null)
+    const cardFeatureRef = useRef<HTMLInputElement>(null)
+    const slideItemRef = useRef<HTMLInputElement>(null)
 
     const getVideoDetail = async (id: number, cat: string) => {
         const videoDetail =
@@ -76,18 +75,18 @@ export const SlideRows = (props: SlideRowsProps) => {
         }
     }
 
-    const handleClickOutside = (e) => {
+    const handleClickOutside = (e: Event) => {
         if (cardFeatureRef.current) {
             if (
-                !cardFeatureRef.current.contains(e.target) &&
-                !slideItemRef.current.contains(e.target)
+                !cardFeatureRef.current.contains(e.target as Node) &&
+                !slideItemRef?.current?.contains(e.target as Node)
             ) {
                 setItem(DEFAULT_ITEM)
             }
         }
     }
 
-    const renderList = (data) => {
+    const renderList = (data: SearchStates[] | ContentStates[] | []) => {
         return data.map((slideItem) => (
             <Card
                 onClick={() => {
@@ -128,7 +127,7 @@ export const SlideRows = (props: SlideRowsProps) => {
                 $justifyContent='space-evenly'
                 ref={slideItemRef}
             >
-                {renderList(dataOnBrowse || data)}
+                {renderList(dataOnBrowse || data || [])}
             </CardGroup>
 
             {item.id !== -1 ? (
