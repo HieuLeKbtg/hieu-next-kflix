@@ -1,4 +1,3 @@
-import React from 'react'
 import {
     FooterBreak,
     FooterColumn,
@@ -7,7 +6,7 @@ import {
     FooterRow,
     FooterText,
     FooterTitle
-} from 'src/components/footer'
+} from '@libs/component'
 
 export function MainFooter() {
     return (

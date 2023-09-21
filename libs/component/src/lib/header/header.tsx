@@ -21,14 +21,14 @@ export const HeaderBackground = styled.div<HeaderBgProps>`
             rgba(0, 0, 0, 0.35)
         ),
         url(${({ src }) =>
-        src
-            ? `../images/misc/${src}.jpg`
-            : '../images/misc/home-bg.jpg'})
+                src
+                    ? `../images/misc/${src}.jpg`
+                    : '../images/misc/home-bg.jpg'})
             top left / cover no-repeat;
 
     @media (max-width: 1100px) {
         ${({ dontShowOnSmallViewPort }) =>
-        dontShowOnSmallViewPort && `background: none;`}
+            dontShowOnSmallViewPort && `background: none;`}
     }
 `
 
@@ -48,7 +48,7 @@ export const HeaderContainer = styled.div`
     }
 `
 
-export const HeaderLink = styled(Link) <{ $active?: boolean }>`
+export const HeaderLink = styled(Link)<{ $active?: boolean }>`
     color: #fff;
     text-decoration: none;
     margin-right: 30px;

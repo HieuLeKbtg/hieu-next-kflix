@@ -1,9 +1,8 @@
 'use client'
 
-import { appRoutes } from 'app/routes'
+import { HeaderGroup } from '@libs/component'
+import { appRoutes } from '@libs/utils'
 import { signOut } from 'next-auth/react'
-
-import { HeaderGroup } from '../../../components'
 
 const SignOutBtn = () => {
     return (

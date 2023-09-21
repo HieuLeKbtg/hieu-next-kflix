@@ -1,14 +1,14 @@
 'use client'
 
-import { appRoutes } from 'app/routes'
-import { usePathname } from 'next/navigation'
-import React, { ReactNode } from 'react'
 import {
     Header,
     HeaderButtonLink,
     HeaderFrame,
     HeaderLogo
-} from 'src/components/header'
+} from '@libs/component'
+import { appRoutes } from '@libs/utils'
+import { usePathname } from 'next/navigation'
+import { ReactNode } from 'react'
 
 const PublicHeader = ({ children }: { children: ReactNode }) => {
     const pathname = usePathname()

@@ -1,4 +1,4 @@
-import { configEnv } from 'src/utils/configEnv'
+import { configEnv } from '@libs/utils'
 
 type RequestProps = {
     api: string
@@ -15,12 +15,14 @@ export abstract class BaseServices {
         Authorization: `Bearer ${this.apiKey}`
     }
 
-    protected async getRequest<T>(params: RequestProps): Promise<T> | null {
+    protected async getRequest<T>(params: RequestProps): Promise<T> {
         const { api, body, headers, callback } = params
 
         const result = await fetch(`${this.baseApi}/${api}`, {
             method: 'GET',
-            headers: { ...this.baseHeader, ...headers },
+            headers: headers
+                ? { ...this.baseHeader, ...headers }
+                : this.baseHeader,
             body
         })
             .then((rs) => {
@@ -33,11 +35,13 @@ export abstract class BaseServices {
         return result
     }
 
-    protected async postRequest<T>(params: RequestProps): Promise<T> | null {
+    protected async postRequest<T>(params: RequestProps): Promise<T> {
         const { api, body, headers, callback } = params
         const result = await fetch(`${this.baseApi}/${api}`, {
             method: 'POST',
-            headers: { ...this.baseHeader, ...headers },
+            headers: headers
+                ? { ...this.baseHeader, ...headers }
+                : this.baseHeader,
             body
         })
             .then((rs) => {

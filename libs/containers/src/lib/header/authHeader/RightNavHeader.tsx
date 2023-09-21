@@ -1,21 +1,21 @@
-import { appRoutes } from 'app/routes'
-import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth'
-
 import {
     HeaderDropdown,
     HeaderGroup,
     HeaderLink,
     HeaderPicture,
     HeaderProfile
-} from '../../../components'
+} from '@libs/component'
+import { appRoutes } from '@libs/utils'
+import { redirect } from 'next/navigation'
+import { getServerSession } from 'next-auth'
+
 import SearchBox from './SearchBox'
 import SignOutBtn from './SignOutBtn'
 
 const RightNavHeader = async () => {
     const session = await getServerSession()
 
-    if (!session) {
+    if (!session?.user) {
         redirect(appRoutes.HOME)
     }
 

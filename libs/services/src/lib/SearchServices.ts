@@ -1,4 +1,5 @@
-import { Genres, ResponseSearch, SearchStates } from '../types'
+import { Genres, ResponseSearch, SearchStates } from '@libs/types'
+
 import { BaseServices } from './BaseServices'
 
 class SearchServices extends BaseServices {

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
     Header,
     HeaderFeature,
@@ -6,7 +5,7 @@ import {
     HeaderFrame,
     HeaderPlayButton,
     HeaderText
-} from 'src/components'
+} from '@libs/component'
 
 import LeftNavHeader from './LeftNavHeader'
 import RightNavHeader from './RightNavHeader'

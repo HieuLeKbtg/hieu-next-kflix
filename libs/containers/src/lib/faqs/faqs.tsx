@@ -1,20 +1,17 @@
-import React from 'react'
 import {
     AccordionBody,
     AccordionFrame,
     AccordionHeader,
     AccordionItem,
     AccordionTitle,
-    MainAccordion
-} from 'src/components/accordion'
-import {
+    MainAccordion,
     OptFormBreak,
     OptFormButton,
     OptFormContainer,
     OptFormInput,
     OptFormText
-} from 'src/components/opt-form'
-import { faqData } from 'src/fixtures'
+} from '@libs/component'
+import { faqData } from '@libs/fixtures'
 
 export function FaqsContainer() {
     return (

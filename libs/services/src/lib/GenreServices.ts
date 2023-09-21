@@ -1,4 +1,4 @@
-import { ResponseGenres } from 'src/types'
+import { ResponseGenres } from '@libs/types'
 
 import { BaseServices } from './BaseServices'
 

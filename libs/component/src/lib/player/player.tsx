@@ -98,23 +98,23 @@ export const PlayerVideo = ({ src }) => {
 
     return showPlayer
         ? ReactDOM.createPortal(
-            <Overlay
-                onClick={() => setShowPlayer(false)}
-                data-testid='player'
-            >
-                <Inner>
-                    <iframe
-                        style={{ width: '100%', height: '100%' }}
-                        id='netflix-player'
-                        src={src}
-                        allow='autoplay; fullscreen;encrypted-media;'
-                    />
+              <Overlay
+                  onClick={() => setShowPlayer(false)}
+                  data-testid='player'
+              >
+                  <Inner>
+                      <iframe
+                          style={{ width: '100%', height: '100%' }}
+                          id='netflix-player'
+                          src={src}
+                          allow='autoplay; fullscreen;encrypted-media;'
+                      />
 
-                    <Close />
-                </Inner>
-            </Overlay>,
-            document.body
-        )
+                      <Close />
+                  </Inner>
+              </Overlay>,
+              document.body
+          )
         : null
 }
 

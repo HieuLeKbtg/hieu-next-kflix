@@ -1,4 +1,9 @@
-import { Genres, ResponseSeries, ResponseVideo, SeriesStates } from 'src/types'
+import {
+    Genres,
+    ResponseSeries,
+    ResponseVideo,
+    SeriesStates
+} from '@libs/types'
 
 import { BaseServices } from './BaseServices'
 

@@ -1,4 +1,4 @@
-import { ResponseConfiguration } from 'src/types'
+import { ResponseConfiguration } from '@libs/types'
 
 import { BaseServices } from './BaseServices'
 

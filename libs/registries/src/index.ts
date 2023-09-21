@@ -1,1 +1,2 @@
-export * from './lib/registries'
+export * from './lib/firebase'
+export * from './lib/styledComponentRegistry'

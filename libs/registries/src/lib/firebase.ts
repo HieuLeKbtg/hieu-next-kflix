@@ -1,7 +1,6 @@
+import { configEnv } from '@libs/utils'
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-
-import { configEnv } from '../utils'
 
 const config = {
     apiKey: configEnv.FIREBASE_API_KEY,

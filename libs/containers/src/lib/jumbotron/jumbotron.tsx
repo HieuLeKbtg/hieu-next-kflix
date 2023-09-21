@@ -1,13 +1,12 @@
-import React from 'react'
-import { Jumbotron } from 'src/components'
 import {
+    Jumbotron,
     JumbotronContainer,
     JumbotronImage,
     JumbotronPane,
     JumbotronSubTitle,
     JumbotronTitle
-} from 'src/components/jumbotron'
-import { jumboData } from 'src/fixtures'
+} from '@libs/component'
+import { jumboData } from '@libs/fixtures'
 
 export function MainJumbotron() {
     return (

@@ -1,8 +1,7 @@
 'use client'
 
+import { HeaderSearch } from '@libs/component'
 import { useState } from 'react'
-
-import { HeaderSearch } from '@/components/header'
 
 const SearchBox = () => {
     const [searchTerm, setSearchTerm] = useState<string>('')

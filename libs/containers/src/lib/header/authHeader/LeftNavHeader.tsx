@@ -1,9 +1,8 @@
 'use client'
 
-import { appRoutes } from 'app/routes'
+import { HeaderGroup, HeaderLink, HeaderLogo } from '@libs/component'
+import { appRoutes } from '@libs/utils'
 import { usePathname } from 'next/navigation'
-import React from 'react'
-import { HeaderGroup, HeaderLink, HeaderLogo } from 'src/components'
 
 const LeftNavHeader = () => {
     const pathname = usePathname()
