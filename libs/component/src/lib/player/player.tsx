@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from 'react'
 import ReactDOM from 'react-dom'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 const Overlay = styled.div`
     display: flex;

@@ -22,8 +22,8 @@ export const HeaderBackground = styled.div<HeaderBgProps>`
         ),
         url(${({ src }) =>
                 src
-                    ? `../images/misc/${src}.jpg`
-                    : '../images/misc/home-bg.jpg'})
+                    ? `../assets/images/misc/${src}.jpg`
+                    : '../assets/images/misc/home-bg.jpg'})
             top left / cover no-repeat;
 
     @media (max-width: 1100px) {
@@ -298,7 +298,7 @@ export const HeaderSearch = ({ searchTerm, setSearchTerm, ...restProps }) => {
                 onClick={() => setSearchActive((searchActive) => !searchActive)}
                 data-testid='search-click'
             >
-                <img src='/images/icons/search.png' alt='Search' />
+                <img src='assets/images/icons/search.png' alt='Search' />
             </SearchIcon>
             <SearchInput
                 value={searchTerm}
@@ -319,5 +319,5 @@ export const HeaderSearch = ({ searchTerm, setSearchTerm, ...restProps }) => {
 }
 
 export const HeaderPicture = ({ src, ...restProps }) => {
-    return <Picture {...restProps} src={`/images/users/${src}.png`} />
+    return <Picture {...restProps} src={`assets/images/users/${src}.png`} />
 }

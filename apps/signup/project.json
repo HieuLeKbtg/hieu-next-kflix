@@ -1,5 +1,5 @@
 {
-    "name": "apps-signup",
+    "name": "signup",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "apps/signup",
     "projectType": "application",
@@ -9,7 +9,14 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/apps/signup"
+                "outputPath": "dist/apps/signup",
+                "assets":[
+                    {
+                        "input": "./libs/utils/src/lib/assets", 
+                        "glob": "**/*", 
+                        "output": "assets"
+                    }
+                ]
             },
             "configurations": {
                 "development": {
@@ -22,16 +29,17 @@
             "executor": "@nx/next:server",
             "defaultConfiguration": "development",
             "options": {
-                "buildTarget": "apps-signup:build",
-                "dev": true
+                "buildTarget": "signup:build",
+                "dev": true,
+                "port":4500
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "apps-signup:build:development",
+                    "buildTarget": "signup:build:development",
                     "dev": true
                 },
                 "production": {
-                    "buildTarget": "apps-signup:build:production",
+                    "buildTarget": "signup:build:production",
                     "dev": false
                 }
             }
@@ -39,7 +47,7 @@
         "export": {
             "executor": "@nx/next:export",
             "options": {
-                "buildTarget": "apps-signup:build:production"
+                "buildTarget": "signup:build:production"
             }
         },
         "test": {

@@ -1,6 +1,6 @@
 'use client'
-import React, { createContext, useContext, useState } from 'react'
-import styled from 'styled-components/macro'
+import { createContext, useContext, useState } from 'react'
+import styled from 'styled-components'
 
 export const CardTitle = styled.p`
     font-size: 18px;
@@ -236,7 +236,7 @@ export const MainCardFeature = (props) => {
                 <CardFeatureTitle>{item.title}</CardFeatureTitle>
                 <CardFeatureText>{item.description}</CardFeatureText>
                 <CardFeatureClose onClick={onClose}>
-                    <img src='/images/icons/close.png' alt='Close' />
+                    <img src='assets/images/icons/close.png' alt='Close' />
                 </CardFeatureClose>
 
                 <CardGroup

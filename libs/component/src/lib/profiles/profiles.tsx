@@ -1,6 +1,6 @@
 'use client'
 
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 export const ProfilesContainer = styled.div`
     display: flex;
@@ -74,7 +74,7 @@ export const MainProfilesPicture = ({
 }) => {
     return (
         <ProfilesPicture
-            src={src || '/images/misc/loading.gif'}
+            src={src || 'assets/images/misc/loading.gif'}
             {...restProps}
         />
     )

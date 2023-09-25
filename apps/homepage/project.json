@@ -9,7 +9,14 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/apps/homepage"
+                "outputPath": "dist/apps/homepage",
+                "assets":[
+                    {
+                        "input": "./libs/utils/src/lib/assets", 
+                        "glob": "**/*", 
+                        "output": "assets"
+                    }
+                ]
             },
             "configurations": {
                 "development": {
@@ -23,7 +30,8 @@
             "defaultConfiguration": "development",
             "options": {
                 "buildTarget": "homepage:build",
-                "dev": true
+                "dev": true,
+                "port": 4000
             },
             "configurations": {
                 "development": {

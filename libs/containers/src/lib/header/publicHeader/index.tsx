@@ -22,7 +22,7 @@ export const PublicHeader = ({ children }: { children: ReactNode }) => {
                 <HeaderFrame>
                     <HeaderLogo
                         to={appRoutes.HOME}
-                        src='/images/icons/logo.svg'
+                        src='assets/images/icons/logo.svg'
                         alt='Netflix'
                     />
                     {!isOnAuthPages && (

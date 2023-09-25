@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { styled } from 'styled-components/macro'
+import { styled } from 'styled-components'
 
 export const OptFormContainer = styled.div`
     display: flex;
@@ -79,7 +79,7 @@ export const OptFormButton = ({ children, ...restProps }) => {
     return (
         <Button {...restProps}>
             {children}{' '}
-            <img src='/images/icons/chevron-right.png' alt='Try Now' />
+            <img src='assets/images/icons/chevron-right.png' alt='Try Now' />
         </Button>
     )
 }

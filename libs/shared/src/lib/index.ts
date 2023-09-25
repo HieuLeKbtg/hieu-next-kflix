@@ -1,4 +1,4 @@
-export * from './api/auth/[...nextauth]'
+export * from './api'
 export * from './customProvider'
 export * from './globalLayout'
 export * from './globalStyles'

@@ -4,7 +4,7 @@ export const jumboData = [
         title: 'Enjoy on your TV.',
         subTitle:
             'Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.',
-        image: '/images/misc/home-tv.jpg',
+        image: 'assets/images/misc/home-tv.jpg',
         alt: 'Tiger King on Netflix',
         direction: 'row'
     },
@@ -12,7 +12,7 @@ export const jumboData = [
         id: 2,
         title: 'Download your programmes to watch on the go.',
         subTitle: 'Save your data and watch all your favourites offline.',
-        image: '/images/misc/home-mobile.jpg',
+        image: 'assets/images/misc/home-mobile.jpg',
         alt: 'Watch on mobile',
         direction: 'row-reverse'
     },
@@ -21,7 +21,7 @@ export const jumboData = [
         title: 'Watch everywhere.',
         subTitle:
             'Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.',
-        image: '/images/misc/home-imac.jpg',
+        image: 'assets/images/misc/home-imac.jpg',
         alt: 'Money Heist on Netflix',
         direction: 'row'
     }

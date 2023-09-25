@@ -9,7 +9,14 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/apps/signin"
+                "outputPath": "dist/apps/signin",
+                "assets":[
+                    {
+                        "input": "./libs/utils/src/lib/assets", 
+                        "glob": "**/*", 
+                        "output": "assets"
+                    }
+                ]
             },
             "configurations": {
                 "development": {
@@ -23,7 +30,8 @@
             "defaultConfiguration": "development",
             "options": {
                 "buildTarget": "signin:build",
-                "dev": true
+                "dev": true,
+                "port":4400
             },
             "configurations": {
                 "development": {

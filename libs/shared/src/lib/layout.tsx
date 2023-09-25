@@ -2,15 +2,11 @@ import { SessProvider } from '@libs/providers'
 import { getServerSession } from 'next-auth'
 import { ReactNode } from 'react'
 
-import { authOptions } from './api/auth/[...nextauth]/route'
+import { authOptions } from './api'
 import CustomProvider from './customProvider'
 import GlobalLayout from './globalLayout'
 
-export default async function RootLayout({
-    children
-}: {
-    children: ReactNode
-}) {
+export async function RootLayout({ children }: { children: ReactNode }) {
     const session = await getServerSession(authOptions)
 
     return (

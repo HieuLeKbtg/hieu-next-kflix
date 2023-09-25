@@ -11,7 +11,7 @@ const LeftNavHeader = () => {
         <HeaderGroup>
             <HeaderLogo
                 to={appRoutes.HOME}
-                src='/images/icons/logo.svg'
+                src='assets/images/icons/logo.svg'
                 alt='Netflix'
             />
             <HeaderLink $active={pathname === '/series'} href='/series'>

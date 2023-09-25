@@ -14,10 +14,11 @@ import {
     MainJumbotron,
     PublicHeader
 } from '@libs/containers'
-import { authOptions } from '@libs/shared'
 import { appRoutes } from '@libs/utils'
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
+
+import { authOptions } from './api/auth/[...nextauth]/route'
 
 export default async function Homepage() {
     const session = await getServerSession(authOptions)
