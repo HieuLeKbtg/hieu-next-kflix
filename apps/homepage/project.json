@@ -31,7 +31,7 @@
             "options": {
                 "buildTarget": "homepage:build",
                 "dev": true,
-                "port": 4000
+                "port": 4200
             },
             "configurations": {
                 "development": {

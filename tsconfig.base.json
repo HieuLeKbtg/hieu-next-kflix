@@ -32,9 +32,9 @@
             "@libs/providers": ["libs/providers/src/index.ts"],
             "@libs/registries": ["libs/registries/src/index.ts"],
             "@libs/services": ["libs/services/src/index.ts"],
+            "@libs/shared": ["libs/shared/src/index.ts"],
             "@libs/types": ["libs/types/src/index.ts"],
-            "@libs/utils": ["libs/utils/src/index.ts"],
-            "@libs/shared": ["libs/shared/src/index.ts"]
+            "@libs/utils": ["libs/utils/src/index.ts"]
         },
         "plugins": [
             {

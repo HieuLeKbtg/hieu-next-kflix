@@ -31,7 +31,7 @@
             "options": {
                 "buildTarget": "series:build",
                 "dev": true,
-                "port":4300
+                "port":4203
             },
             "configurations": {
                 "development": {

@@ -31,7 +31,7 @@
             "options": {
                 "buildTarget": "signup:build",
                 "dev": true,
-                "port":4500
+                "port":4205
             },
             "configurations": {
                 "development": {
