@@ -1,6 +1,13 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
+import {
+    createContext,
+    Dispatch,
+    ReactNode,
+    SetStateAction,
+    useContext,
+    useState
+} from 'react'
 import { styled } from 'styled-components'
 
 export const AccordionContainer = styled.div`
@@ -105,9 +112,17 @@ export const Body = styled.div`
     }
 `
 
-const ToggleContext = createContext(null)
+const ToggleContext = createContext<{
+    toggleShow: boolean
+    setToggleShow: Dispatch<SetStateAction<boolean>>
+}>({ toggleShow: false, setToggleShow: () => {} })
 
-export function MainAccordion({ children, ...restProps }) {
+export function MainAccordion({
+    children,
+    ...restProps
+}: {
+    children: ReactNode
+}) {
     return (
         <AccordionContainer {...restProps}>
             <AccordionInner>{children}</AccordionInner>
@@ -115,7 +130,12 @@ export function MainAccordion({ children, ...restProps }) {
     )
 }
 
-export const AccordionItem = ({ children, ...restProps }) => {
+export const AccordionItem = ({
+    children,
+    ...restProps
+}: {
+    children: ReactNode
+}) => {
     const [toggleShow, setToggleShow] = useState(false)
 
     return (
@@ -124,7 +144,12 @@ export const AccordionItem = ({ children, ...restProps }) => {
         </ToggleContext.Provider>
     )
 }
-export const AccordionHeader = ({ children, ...restProps }) => {
+export const AccordionHeader = ({
+    children,
+    ...restProps
+}: {
+    children: ReactNode
+}) => {
     const { toggleShow, setToggleShow } = useContext(ToggleContext)
     return (
         <Header onClick={() => setToggleShow(!toggleShow)} {...restProps}>
@@ -138,7 +163,12 @@ export const AccordionHeader = ({ children, ...restProps }) => {
     )
 }
 
-export const AccordionBody = ({ children, ...restProps }) => {
+export const AccordionBody = ({
+    children,
+    ...restProps
+}: {
+    children: ReactNode
+}) => {
     const { toggleShow } = useContext(ToggleContext)
 
     return (

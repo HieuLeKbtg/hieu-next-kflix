@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
 export const OptFormContainer = styled.div`
@@ -75,7 +75,12 @@ export const OptFormText = styled.p`
     }
 `
 
-export const OptFormButton = ({ children, ...restProps }) => {
+export const OptFormButton = ({
+    children,
+    ...restProps
+}: {
+    children: ReactNode
+}) => {
     return (
         <Button {...restProps}>
             {children}{' '}

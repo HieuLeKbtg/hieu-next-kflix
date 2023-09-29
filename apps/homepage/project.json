@@ -10,10 +10,10 @@
             "defaultConfiguration": "production",
             "options": {
                 "outputPath": "dist/apps/homepage",
-                "assets":[
+                "assets": [
                     {
-                        "input": "./libs/utils/src/lib/assets", 
-                        "glob": "**/*", 
+                        "input": "./libs/utils/src/lib/assets",
+                        "glob": "**/*",
                         "output": "assets"
                     }
                 ]

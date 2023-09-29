@@ -70,14 +70,6 @@
             "options": {
                 "lintFilePatterns": ["apps/browse/**/*.{ts,tsx,js,jsx}"]
             }
-        },
-        "component-test": {
-            "executor": "@nx/cypress:cypress",
-            "options": {
-                "cypressConfig": "apps/browse/cypress.config.ts",
-                "testingType": "component",
-                "skipServe": true
-            }
         }
     },
     "tags": []

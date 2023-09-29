@@ -1,5 +1,13 @@
 'use client'
-import { createContext, useContext, useState } from 'react'
+import { ContentStates, SearchStates } from '@libs/types'
+import {
+    createContext,
+    Dispatch,
+    ReactNode,
+    SetStateAction,
+    useContext,
+    useState
+} from 'react'
 import styled from 'styled-components'
 
 export const CardTitle = styled.p`
@@ -190,23 +198,57 @@ export const CardMaturity = styled.div<{ rating: number }>`
     margin-right: 10px;
     font-size: 12px;
 `
+const DEFAULT_ITEM_FEATURE: ContentStates = {
+    id: -1,
+    title: '',
+    description: '',
+    backdrop_path: '',
+    poster_path: '',
+    genres: []
+}
 
-const FeatureContext = createContext(null)
+const FeatureContext = createContext<{
+    setShowFeature: Dispatch<SetStateAction<boolean>>
+    showFeature: boolean
+    itemFeature: SearchStates | ContentStates | null
+    setItemFeature: Dispatch<SetStateAction<SearchStates | ContentStates>>
+}>({
+    showFeature: false,
+    itemFeature: null,
+    setShowFeature: () => {},
+    setItemFeature: () => {}
+})
 
-export function Card({ children, ...restProps }) {
+export function Card({
+    children,
+    onClick,
+    ...restProps
+}: {
+    children: ReactNode
+    onClick: () => void
+}) {
     const [showFeature, setShowFeature] = useState(false)
-    const [itemFeature, setItemFeature] = useState({})
+    const [itemFeature, setItemFeature] = useState(DEFAULT_ITEM_FEATURE)
 
     return (
         <FeatureContext.Provider
             value={{ showFeature, setShowFeature, itemFeature, setItemFeature }}
         >
-            <CardContainer {...restProps}>{children}</CardContainer>
+            <CardContainer {...restProps} onClick={onClick}>
+                {children}
+            </CardContainer>
         </FeatureContext.Provider>
     )
 }
 
-export const MainCardItem = ({ item, children, ...restProps }) => {
+export const MainCardItem = ({
+    item,
+    children,
+    ...restProps
+}: {
+    item: SearchStates | ContentStates
+    children: ReactNode
+}) => {
     const { setShowFeature, setItemFeature } = useContext(FeatureContext)
 
     return (
@@ -222,7 +264,12 @@ export const MainCardItem = ({ item, children, ...restProps }) => {
     )
 }
 
-export const MainCardFeature = (props) => {
+export const MainCardFeature = (props: {
+    children: ReactNode
+    url: string
+    item: ContentStates
+    onClose: () => void
+}) => {
     const { children, url, item, onClose, ...restProps } = props
 
     const genresTextNode = item.genres.reduce((total, current) => {

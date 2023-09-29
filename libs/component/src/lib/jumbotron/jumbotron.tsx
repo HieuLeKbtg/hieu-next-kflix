@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { styled } from 'styled-components'
 
 type JumbotronInnerProps = {
@@ -71,7 +71,14 @@ export const JumbotronImage = styled.img`
     height: auto;
 `
 
-export const Jumbotron = ({ children, direction = 'row', ...restProps }) => {
+export const Jumbotron = ({
+    children,
+    direction = 'row',
+    ...restProps
+}: {
+    children: ReactNode
+    direction: string
+}) => {
     return (
         <JumbotronItem {...restProps}>
             <JumbotronInner direction={direction}>{children}</JumbotronInner>

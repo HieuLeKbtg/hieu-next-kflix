@@ -16,7 +16,7 @@ export const AuthHeader = () => {
             <>
                 <HeaderFrame>
                     <LeftNavHeader />
-                    {/* @ts-expect-error Async Server Component */}
+                    
                     <RightNavHeader />
                 </HeaderFrame>
 

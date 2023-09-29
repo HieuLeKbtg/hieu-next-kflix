@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { Dispatch, ReactNode, SetStateAction, useState } from 'react'
 import styled from 'styled-components'
 
 type HeaderBgProps = {
@@ -275,19 +275,40 @@ export const Header = (props: {
     return children
 }
 
-export const HeaderFrame = ({ children, ...restProps }) => {
+export const HeaderFrame = ({
+    children,
+    ...restProps
+}: {
+    children: ReactNode
+}) => {
     return <HeaderContainer {...restProps}>{children}</HeaderContainer>
 }
 
-export const HeaderLogo = ({ to, ...restProps }) => {
+export const HeaderLogo = ({
+    to,
+    src,
+    alt,
+    ...restProps
+}: {
+    to: string
+    src: string
+    alt: string
+}) => {
     return (
         <Link href={to}>
-            <Logo {...restProps} />
+            <Logo {...restProps} src={src} alt={alt} />
         </Link>
     )
 }
 
-export const HeaderSearch = ({ searchTerm, setSearchTerm, ...restProps }) => {
+export const HeaderSearch = ({
+    searchTerm,
+    setSearchTerm,
+    ...restProps
+}: {
+    searchTerm: string
+    setSearchTerm: Dispatch<SetStateAction<string>>
+}) => {
     const [searchActive, setSearchActive] = useState(false)
     const pathname = usePathname()
     const router = useRouter()
@@ -318,6 +339,6 @@ export const HeaderSearch = ({ searchTerm, setSearchTerm, ...restProps }) => {
     )
 }
 
-export const HeaderPicture = ({ src, ...restProps }) => {
+export const HeaderPicture = ({ src, ...restProps }: { src: string }) => {
     return <Picture {...restProps} src={`assets/images/users/${src}.png`} />
 }

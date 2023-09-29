@@ -133,7 +133,6 @@ export const SlideRows = (props: SlideRowsProps) => {
             {item.id !== -1 ? (
                 <div ref={cardFeatureRef}>
                     <MainCardFeature
-                        genres={item.genres}
                         item={item}
                         url={`${imageConfigs.secure_base_url}/original/${item.poster_path}`}
                         onClose={() => setItem(DEFAULT_ITEM)}

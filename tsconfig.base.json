@@ -18,7 +18,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "importHelpers": true,
-        "target": "es2015",
+        "target": "es2022",
         "module": "esnext",
         "lib": ["es2020", "dom"],
         "skipLibCheck": true,
@@ -41,16 +41,19 @@
                 "name": "next"
             }
         ],
-        "types": ["jest", "node"]
+        "types": ["jest", "node","cypress"]
     },
     "include": [
         "**/*.ts",
         "**/*.tsx",
         "**/*.js",
         "**/*.jsx",
+        "**/*.cy.ts",
+        "**/*.cy.tsx",
         "next-env.d.ts",
         "./libs/*/src/**/*",
-        "./apps/*/src/**/*"
+        "./apps/*/src/**/*",
+        "../node_modules/cypress",
     ],
     "exclude": ["node_modules", "tmp"]
 }

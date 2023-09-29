@@ -1,6 +1,13 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
+import {
+    createContext,
+    Dispatch,
+    ReactNode,
+    SetStateAction,
+    useContext,
+    useState
+} from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 
@@ -81,9 +88,15 @@ const Button = styled.button`
     }
 `
 
-const PlayerContext = createContext(null)
+const PlayerContext = createContext<{
+    showPlayer: boolean
+    setShowPlayer: Dispatch<SetStateAction<boolean>>
+}>({
+    showPlayer: false,
+    setShowPlayer: () => {}
+})
 
-export function Player({ children, ...restProps }) {
+export function Player({ children, ...restProps }: { children: ReactNode }) {
     const [showPlayer, setShowPlayer] = useState(false)
 
     return (
@@ -93,7 +106,7 @@ export function Player({ children, ...restProps }) {
     )
 }
 
-export const PlayerVideo = ({ src }) => {
+export const PlayerVideo = ({ src }: { src: string }) => {
     const { showPlayer, setShowPlayer } = useContext(PlayerContext)
 
     return showPlayer
@@ -118,7 +131,12 @@ export const PlayerVideo = ({ src }) => {
         : null
 }
 
-export const PlayerButton = ({ onClick, ...restProps }) => {
+export const PlayerButton = ({
+    onClick,
+    ...restProps
+}: {
+    onClick: () => void
+}) => {
     const { setShowPlayer } = useContext(PlayerContext)
 
     return (

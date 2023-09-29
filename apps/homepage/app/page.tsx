@@ -31,7 +31,7 @@ export default async function Homepage() {
         <>
             <PublicHeader>
                 <FeatureContainer>
-                    <FeatureTitle>
+                    <FeatureTitle data-cy='feature-title'>
                         Unlimited films, TV programmes and more
                     </FeatureTitle>
                     <FeatureSubTitle>

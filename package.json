@@ -6,7 +6,9 @@
         "dev:homepage": "npx nx serve homepage",
         "dev:signin": "npx nx serve signin",
         "dev": "npx nx run-many --target=serve --projects=homepage,browse,films,series,signin,signup, --parallel=6",
-        "test:browse": "npx nx component-test browse --watch"
+        "test:browse": "npx nx component-test browse --watch",
+        "test:homepage": "npx nx component-test homepage --watch",
+        "open:cy": "npx cypress open"
     },
     "private": true,
     "dependencies": {
@@ -59,7 +61,7 @@
         "babel-jest": "^29.4.1",
         "babel-plugin-styled-components": "2.1.4",
         "babel-preset-next": "^1.4.0",
-        "cypress": "^13.0.0",
+        "cypress": "^13.2.0",
         "eslint": "^8.48.0",
         "eslint-config-airbnb": "^18.2.0",
         "eslint-config-next": "13.4.19",
@@ -67,7 +69,7 @@
         "eslint-config-standard": "^17.1.0",
         "eslint-config-standard-react": "^13.0.0",
         "eslint-config-standard-with-typescript": "^36.1.1",
-        "eslint-plugin-cypress": "^2.13.4",
+        "eslint-plugin-cypress": "^2.15.1",
         "eslint-plugin-import": "2.27.5",
         "eslint-plugin-jsx-a11y": "6.7.1",
         "eslint-plugin-n": "^16.0.1",
