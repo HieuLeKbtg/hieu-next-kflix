@@ -12,7 +12,7 @@ import {
     FormTitle
 } from '@libs/component'
 import { AppRoutesWithTempRoutes } from '@libs/utils'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { signIn, SignInResponse } from 'next-auth/react'
 import { useState } from 'react'
 
@@ -20,6 +20,7 @@ export default function SignInForm() {
     const [emailAddress, setEmailAddress] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [error, setError] = useState<string>('')
+    const router = useRouter()
 
     const isInvalid = password === '' || emailAddress === ''
 
@@ -38,7 +39,7 @@ export default function SignInForm() {
         if (signinRes?.error) {
             setError(signinRes.error)
         } else {
-            redirect(AppRoutesWithTempRoutes.BROWSE)
+            router.push(AppRoutesWithTempRoutes.BROWSE)
         }
     }
 

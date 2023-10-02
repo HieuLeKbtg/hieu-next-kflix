@@ -14,10 +14,16 @@ const LeftNavHeader = () => {
                 src='assets/images/icons/logo.svg'
                 alt='Netflix'
             />
-            <HeaderLink $active={pathname === '/series'} href='/series'>
+            <HeaderLink
+                $active={pathname === '/series'}
+                href={AppRoutesWithTempRoutes.SERIES}
+            >
                 Series
             </HeaderLink>
-            <HeaderLink $active={pathname === '/films'} href='films'>
+            <HeaderLink
+                $active={pathname === '/films'}
+                href={AppRoutesWithTempRoutes.FILMS}
+            >
                 Films
             </HeaderLink>
         </HeaderGroup>

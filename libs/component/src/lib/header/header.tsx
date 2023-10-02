@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import React, { Dispatch, ReactNode, SetStateAction, useState } from 'react'
+import { Dispatch, ReactNode, SetStateAction, useState } from 'react'
 import styled from 'styled-components'
 
 type HeaderBgProps = {
@@ -94,10 +94,6 @@ export const Search = styled.div`
     svg {
         color: white;
         cursor: pointer;
-    }
-
-    @media (max-width: 700px) {
-        display: none;
     }
 `
 
@@ -303,11 +299,11 @@ export const HeaderLogo = ({
 
 export const HeaderSearch = ({
     searchTerm,
-    setSearchTerm,
+    onSetSearchTerm,
     ...restProps
 }: {
     searchTerm: string
-    setSearchTerm: Dispatch<SetStateAction<string>>
+    onSetSearchTerm: Dispatch<SetStateAction<string>>
 }) => {
     const [searchActive, setSearchActive] = useState(false)
     const pathname = usePathname()
@@ -319,11 +315,15 @@ export const HeaderSearch = ({
                 onClick={() => setSearchActive((searchActive) => !searchActive)}
                 data-testid='search-click'
             >
-                <img src='assets/images/icons/search.png' alt='Search' />
+                <img
+                    data-testid='search-icon'
+                    src='assets/images/icons/search.png'
+                    alt='Search'
+                />
             </SearchIcon>
             <SearchInput
                 value={searchTerm}
-                onChange={({ target }) => setSearchTerm(target.value)}
+                onChange={({ target }) => onSetSearchTerm(target.value)}
                 placeholder='Search films and series'
                 $active={searchActive}
                 data-testid='search-input'

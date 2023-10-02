@@ -7,7 +7,7 @@ const SearchBox = () => {
     const [searchTerm, setSearchTerm] = useState<string>('')
 
     return (
-        <HeaderSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <HeaderSearch searchTerm={searchTerm} onSetSearchTerm={setSearchTerm} />
     )
 }
 
