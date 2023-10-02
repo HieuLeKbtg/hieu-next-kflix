@@ -1,5 +1,4 @@
 'use client'
-
 import {
     Header,
     HeaderButtonLink,
@@ -7,15 +6,21 @@ import {
     HeaderLogo
 } from '@libs/component'
 import { AppRoutesWithTempRoutes } from '@libs/utils'
-import { usePathname } from 'next/navigation'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 export const PublicHeader = ({ children }: { children: ReactNode }) => {
-    const pathname = usePathname()
+    const [path, setPath] = useState<string>('')
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window?.location) {
+            setPath(window.location.origin)
+        }
+    }, [])
+
     const isOnAuthPages = !![
         AppRoutesWithTempRoutes.SIGN_IN,
         AppRoutesWithTempRoutes.SIGN_UP
-    ].includes(pathname as AppRoutesWithTempRoutes)
+    ].includes(path as AppRoutesWithTempRoutes)
 
     return (
         <Header>

@@ -27,31 +27,32 @@ export default function SignUpForm() {
     const handleSignup = async () => {
         if (isInvalid) return
 
-        try {
-            const user = await createUserWithEmailAndPassword(
-                auth,
-                emailAddress,
-                password
-            )
-            await updateProfile(user.user, { displayName: firstName })
-            signIn('credentials', {
-                email: emailAddress,
-                password,
-                redirect: true,
-                callbackUrl: AppRoutesWithTempRoutes.HOME
-            })
-        } catch (error) {
-            setError((error as Error).message)
-        }
+        await createUserWithEmailAndPassword(auth, emailAddress, password).then(
+            async (userCredential) => {
+                await updateProfile(userCredential.user, {
+                    displayName: firstName
+                })
+
+                signIn('credentials', {
+                    email: emailAddress,
+                    password,
+                    callbackUrl: AppRoutesWithTempRoutes.HOME
+                })
+            },
+            (error) => {
+                setError(error.message)
+            }
+        )
     }
 
     return (
         <FormContainer>
-            <FormTitle>Sign Up</FormTitle>
-            {error && <FormError>{error}</FormError>}
+            <FormTitle data-testid='title'>Sign Up</FormTitle>
+            {error && <FormError data-testid='error'>{error}</FormError>}
 
             <FormBase>
                 <FormInput
+                    data-testid='first-name'
                     placeholder='First name'
                     value={firstName}
                     onChange={({ target }) =>
@@ -59,6 +60,7 @@ export default function SignUpForm() {
                     }
                 />
                 <FormInput
+                    data-testid='email'
                     placeholder='Email address'
                     value={emailAddress}
                     onChange={({ target }) =>
@@ -66,6 +68,7 @@ export default function SignUpForm() {
                     }
                 />
                 <FormInput
+                    data-testid='password'
                     type='password'
                     value={password}
                     autoComplete='off'
@@ -76,15 +79,21 @@ export default function SignUpForm() {
                 />
             </FormBase>
             <FormSubmit
+                data-testid='signup-btn'
                 disabled={isInvalid}
-                data-testid='sign-up'
                 onClick={handleSignup}
             >
                 Sign Up
             </FormSubmit>
 
             <FormText>
-                Already a user? <FormLink href='/signin'>Sign in now</FormLink>
+                Already a user?{' '}
+                <FormLink
+                    data-testid='sign-in-btn'
+                    href={AppRoutesWithTempRoutes.SIGN_IN}
+                >
+                    Sign in now
+                </FormLink>
             </FormText>
             <FormTextSmall>
                 This page is protected by Google reCAPTCHA to ensure you're not

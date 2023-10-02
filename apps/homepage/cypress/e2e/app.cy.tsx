@@ -3,16 +3,9 @@ describe('render homepage successfully', () => {
 
     it('verify session successfully', async () => {
         // TODO: check session here
-        // const session: Session | null = await getServerSession()
-        // if (session?.user) {
-        //     cy.url().should('include', appRoutes.BROWSE)
-        // } else {
-        //     cy.url().should('include', appRoutes.HOME)
-        // }
     })
 
     it('display text', () => {
-        cy.visit('/')
         cy.get('[data-cy=feature-title]').should(
             'have.text',
             'Unlimited films, TV programmes and more'

@@ -26,14 +26,17 @@ export default function SignInForm() {
     const handleSignin = async () => {
         if (isInvalid) return
 
-        const result: SignInResponse | undefined = await signIn('credentials', {
-            email: emailAddress,
-            password,
-            redirect: false
-        })
+        const signinRes: SignInResponse | undefined = await signIn(
+            'credentials',
+            {
+                email: emailAddress,
+                password,
+                redirect: false
+            }
+        )
 
-        if (result?.error) {
-            setError(result.error)
+        if (signinRes?.error) {
+            setError(signinRes.error)
         } else {
             redirect(AppRoutesWithTempRoutes.BROWSE)
         }

@@ -6,10 +6,13 @@
         "dev:homepage": "npx nx serve homepage",
         "dev:browse": "npx nx serve browse",
         "dev:signin": "npx nx serve signin",
+        "dev:signup": "npx nx serve signup",
         "dev": "npx nx run-many --target=serve --projects=homepage,browse,films,series,signin,signup, --parallel=6",
+        
         "test:browse": "npx nx e2e browse --watch",
-        "test:homepage": "npx nx e2e homepage homepage --watch",
-        "test:signin": "npx nx e2e signin signin --watch",
+        "test:homepage": "npx nx e2e homepage --watch",
+        "test:signin": "npx nx e2e signin --watch",
+        "test:signup": "npx nx e2e signup --watch",
         "test": "npx nx run-many --target=e2e --watch"
     },
     "private": true,

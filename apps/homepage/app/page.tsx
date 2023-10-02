@@ -23,7 +23,7 @@ import { authOptions } from './api/auth/[...nextauth]/route'
 export default async function Homepage() {
     const session = await getServerSession(authOptions)
 
-    if (session?.user) {
+    if (session?.user && session?.user.name !== 'FirebaseError') {
         redirect(AppRoutesWithTempRoutes.BROWSE)
     }
 

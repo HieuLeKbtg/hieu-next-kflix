@@ -8,7 +8,7 @@ import SignUpForm from './Form'
 export default async function SignUp() {
     const session = await getServerSession()
 
-    if (session?.user) {
+    if (session?.user && session?.user.name !== 'FirebaseError') {
         redirect(AppRoutesWithTempRoutes.BROWSE)
     }
 
