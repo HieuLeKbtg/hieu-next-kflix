@@ -6,3 +6,12 @@ export enum appRoutes {
     FILMS = '/films',
     SERIES = '/series'
 }
+
+export enum AppRoutesWithTempRoutes {
+    HOME = 'http://localhost:4200/',
+    BROWSE = 'http://localhost:4201/',
+    SIGN_UP = 'http://localhost:4205/',
+    SIGN_IN = 'http://localhost:4204/',
+    FILMS = 'http://localhost:4202/',
+    SERIES = 'http://localhost:4203/'
+}

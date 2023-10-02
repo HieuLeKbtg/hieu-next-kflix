@@ -27,7 +27,8 @@
     "**/*.js",
     "**/*.jsx",
     "next-env.d.ts",
-    "../../apps/signin/.next/types/**/*.ts"
+    "../../apps/signin/.next/types/**/*.ts",
+    "../../dist/apps/signin/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

@@ -41,7 +41,7 @@
                 "name": "next"
             }
         ],
-        "types": ["jest", "node","cypress"]
+        "types": ["jest", "node", "cypress"]
     },
     "include": [
         "**/*.ts",
@@ -53,7 +53,7 @@
         "next-env.d.ts",
         "./libs/*/src/**/*",
         "./apps/*/src/**/*",
-        "../node_modules/cypress",
+        "../node_modules/cypress"
     ],
     "exclude": ["node_modules", "tmp"]
 }

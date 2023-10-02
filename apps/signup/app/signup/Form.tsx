@@ -11,7 +11,7 @@ import {
     FormTitle
 } from '@libs/component'
 import { auth } from '@libs/registries'
-import { appRoutes } from '@libs/utils'
+import { AppRoutesWithTempRoutes } from '@libs/utils'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
@@ -38,7 +38,7 @@ export default function SignUpForm() {
                 email: emailAddress,
                 password,
                 redirect: true,
-                callbackUrl: appRoutes.HOME
+                callbackUrl: AppRoutesWithTempRoutes.HOME
             })
         } catch (error) {
             setError((error as Error).message)

@@ -1,5 +1,5 @@
 import { MainFooter, PublicHeader } from '@libs/containers'
-import { appRoutes } from '@libs/utils'
+import { AppRoutesWithTempRoutes } from '@libs/utils'
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 
@@ -9,7 +9,7 @@ export default async function SignUp() {
     const session = await getServerSession()
 
     if (session?.user) {
-        redirect(appRoutes.BROWSE)
+        redirect(AppRoutesWithTempRoutes.BROWSE)
     }
 
     return (

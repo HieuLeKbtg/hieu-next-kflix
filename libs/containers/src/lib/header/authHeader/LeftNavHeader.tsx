@@ -1,7 +1,7 @@
 'use client'
 
 import { HeaderGroup, HeaderLink, HeaderLogo } from '@libs/component'
-import { appRoutes } from '@libs/utils'
+import { AppRoutesWithTempRoutes } from '@libs/utils'
 import { usePathname } from 'next/navigation'
 
 const LeftNavHeader = () => {
@@ -10,7 +10,7 @@ const LeftNavHeader = () => {
     return (
         <HeaderGroup>
             <HeaderLogo
-                to={appRoutes.HOME}
+                to={AppRoutesWithTempRoutes.HOME}
                 src='assets/images/icons/logo.svg'
                 alt='Netflix'
             />

@@ -5,7 +5,7 @@ import {
     HeaderPicture,
     HeaderProfile
 } from '@libs/component'
-import { appRoutes } from '@libs/utils'
+import { AppRoutesWithTempRoutes } from '@libs/utils'
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 
@@ -16,7 +16,7 @@ const RightNavHeader = async () => {
     const session = await getServerSession()
 
     if (!session?.user) {
-        redirect(appRoutes.HOME)
+        redirect(AppRoutesWithTempRoutes.HOME)
     }
 
     const { name, email } = session.user

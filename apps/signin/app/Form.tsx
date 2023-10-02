@@ -11,8 +11,9 @@ import {
     FormTextSmall,
     FormTitle
 } from '@libs/component'
-import { appRoutes } from '@libs/utils'
-import { signIn } from 'next-auth/react'
+import { AppRoutesWithTempRoutes } from '@libs/utils'
+import { redirect } from 'next/navigation'
+import { signIn, SignInResponse } from 'next-auth/react'
 import { useState } from 'react'
 
 export default function SignInForm() {
@@ -22,26 +23,30 @@ export default function SignInForm() {
 
     const isInvalid = password === '' || emailAddress === ''
 
-    const handleSignin = () => {
+    const handleSignin = async () => {
         if (isInvalid) return
 
-        signIn('credentials', {
+        const result: SignInResponse | undefined = await signIn('credentials', {
             email: emailAddress,
             password,
-            redirect: true,
-            callbackUrl: appRoutes.BROWSE
-        }).catch((err) => {
-            setError(err.message)
+            redirect: false
         })
+
+        if (result?.error) {
+            setError(result.error)
+        } else {
+            redirect(AppRoutesWithTempRoutes.BROWSE)
+        }
     }
 
     return (
         <FormContainer>
-            <FormTitle>Sign In</FormTitle>
+            <FormTitle data-testid='title'>Sign In</FormTitle>
             {error && <FormError data-testid='error'>{error}</FormError>}
 
             <FormBase>
                 <FormInput
+                    data-testid='email'
                     placeholder='Email address'
                     value={emailAddress}
                     onChange={({ target }) =>
@@ -49,6 +54,7 @@ export default function SignInForm() {
                     }
                 />
                 <FormInput
+                    data-testid='password'
                     type='password'
                     value={password}
                     autoComplete='off'
@@ -65,15 +71,22 @@ export default function SignInForm() {
             </FormBase>
 
             <FormSubmit
+                type='submit'
+                data-testid='submit-btn'
                 disabled={isInvalid}
-                data-testid='sign-in'
                 onClick={handleSignin}
             >
                 Sign In
             </FormSubmit>
 
             <FormText>
-                New to Netflix? <FormLink href='/signup'>Sign up now</FormLink>
+                New to Netflix?{' '}
+                <FormLink
+                    data-testid='sign-up-btn'
+                    href={AppRoutesWithTempRoutes.SIGN_UP}
+                >
+                    Sign up now
+                </FormLink>
             </FormText>
             <FormTextSmall>
                 This page is protected by Google reCAPTCHA to ensure you're not

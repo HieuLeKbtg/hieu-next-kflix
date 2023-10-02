@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { auth } from '@libs/registries'
-import { appRoutes } from '@libs/utils'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -13,25 +12,20 @@ type Credential = {
 export const authOptions = {
     // Configure one or more authentication providers
     pages: {
-        signIn: appRoutes.SIGN_IN
+        signIn: '/'
     },
     providers: [
         CredentialsProvider({
             name: 'Credentials',
             credentials: {},
             async authorize(credentials): Promise<any> {
-                return await signInWithEmailAndPassword(
+                const result = await signInWithEmailAndPassword(
                     auth,
                     (credentials as unknown as Credential).email || '',
                     (credentials as unknown as Credential).password || ''
                 )
-                    .then((userCredential) => {
-                        if (userCredential.user) {
-                            return userCredential.user
-                        }
-                        return null
-                    })
-                    .catch((error) => console.log(error))
+
+                return result
             }
         })
     ]

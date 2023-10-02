@@ -70,6 +70,19 @@
             "options": {
                 "lintFilePatterns": ["apps/homepage/**/*.{ts,tsx,js,jsx}"]
             }
+        },
+        "e2e": {
+            "executor": "@nx/cypress:cypress",
+            "options": {
+                "cypressConfig": "apps/homepage/cypress.config.ts",
+                "testingType": "e2e",
+                "devServerTarget": "homepage:serve"
+            },
+            "configurations": {
+                "production": {
+                    "devServerTarget": "homepage:serve:production"
+                }
+            }
         }
     },
     "tags": []

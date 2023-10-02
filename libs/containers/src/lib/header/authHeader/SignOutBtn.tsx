@@ -1,7 +1,7 @@
 'use client'
 
 import { HeaderGroup } from '@libs/component'
-import { appRoutes } from '@libs/utils'
+import { AppRoutesWithTempRoutes } from '@libs/utils'
 import { signOut } from 'next-auth/react'
 
 const SignOutBtn = () => {
@@ -9,7 +9,9 @@ const SignOutBtn = () => {
         <HeaderGroup>
             <button
                 style={{ width: '100%' }}
-                onClick={() => signOut({ callbackUrl: appRoutes.HOME })}
+                onClick={() =>
+                    signOut({ callbackUrl: AppRoutesWithTempRoutes.HOME })
+                }
             >
                 Sign out
             </button>

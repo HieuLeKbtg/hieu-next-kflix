@@ -10,10 +10,10 @@
             "defaultConfiguration": "production",
             "options": {
                 "outputPath": "dist/apps/signup",
-                "assets":[
+                "assets": [
                     {
-                        "input": "./libs/utils/src/lib/assets", 
-                        "glob": "**/*", 
+                        "input": "./libs/utils/src/lib/assets",
+                        "glob": "**/*",
                         "output": "assets"
                     }
                 ]
@@ -31,7 +31,7 @@
             "options": {
                 "buildTarget": "signup:build",
                 "dev": true,
-                "port":4205
+                "port": 4205
             },
             "configurations": {
                 "development": {
@@ -69,6 +69,19 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "lintFilePatterns": ["apps/signup/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
+        "e2e": {
+            "executor": "@nx/cypress:cypress",
+            "options": {
+                "cypressConfig": "apps/signup/cypress.config.ts",
+                "testingType": "e2e",
+                "devServerTarget": "signup:serve"
+            },
+            "configurations": {
+                "production": {
+                    "devServerTarget": "signup:serve:production"
+                }
             }
         }
     },

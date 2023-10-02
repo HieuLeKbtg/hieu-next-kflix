@@ -6,27 +6,30 @@ import {
     HeaderFrame,
     HeaderLogo
 } from '@libs/component'
-import { appRoutes } from '@libs/utils'
+import { AppRoutesWithTempRoutes } from '@libs/utils'
 import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 
 export const PublicHeader = ({ children }: { children: ReactNode }) => {
     const pathname = usePathname()
-    const isOnAuthPages = !![appRoutes.SIGN_IN, appRoutes.SIGN_UP].includes(
-        pathname as appRoutes
-    )
+    const isOnAuthPages = !![
+        AppRoutesWithTempRoutes.SIGN_IN,
+        AppRoutesWithTempRoutes.SIGN_UP
+    ].includes(pathname as AppRoutesWithTempRoutes)
 
     return (
         <Header>
             <>
                 <HeaderFrame>
                     <HeaderLogo
-                        to={appRoutes.HOME}
+                        to={AppRoutesWithTempRoutes.HOME}
                         src='assets/images/icons/logo.svg'
                         alt='Netflix'
                     />
                     {!isOnAuthPages && (
-                        <HeaderButtonLink href={appRoutes.SIGN_IN}>
+                        <HeaderButtonLink
+                            href={AppRoutesWithTempRoutes.SIGN_IN}
+                        >
                             Sign In
                         </HeaderButtonLink>
                     )}

@@ -1,22 +1,21 @@
 import * as React from 'react'
-import { MainCardItem, MainCardFeature, Card } from './card'
 
+import { Card,MainCardFeature, MainCardItem } from './card'
 
 describe(MainCardItem.name, () => {
-  it('renders', () => {
-    cy.mount(<MainCardItem />)
-  })
+    it('renders', () => {
+        cy.mount(<MainCardItem />)
+    })
 })
 
 describe(MainCardFeature.name, () => {
-  it('renders', () => {
-    cy.mount(<MainCardFeature />)
-  })
+    it('renders', () => {
+        cy.mount(<MainCardFeature />)
+    })
 })
 
 describe(Card.name, () => {
-  it('renders', () => {
-    cy.mount(<Card />)
-  })
+    it('renders', () => {
+        cy.mount(<Card />)
+    })
 })
-
