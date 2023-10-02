@@ -10,10 +10,10 @@
             "defaultConfiguration": "production",
             "options": {
                 "outputPath": "dist/apps/series",
-                "assets":[
+                "assets": [
                     {
-                        "input": "./libs/utils/src/lib/assets", 
-                        "glob": "**/*", 
+                        "input": "./libs/utils/src/lib/assets",
+                        "glob": "**/*",
                         "output": "assets"
                     }
                 ]
@@ -31,7 +31,7 @@
             "options": {
                 "buildTarget": "series:build",
                 "dev": true,
-                "port":4203
+                "port": 4203
             },
             "configurations": {
                 "development": {
@@ -69,6 +69,19 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "lintFilePatterns": ["apps/series/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
+        "e2e": {
+            "executor": "@nx/cypress:cypress",
+            "options": {
+                "cypressConfig": "apps/series/cypress.config.ts",
+                "testingType": "e2e",
+                "devServerTarget": "series:serve"
+            },
+            "configurations": {
+                "production": {
+                    "devServerTarget": "series:serve:production"
+                }
             }
         }
     },
