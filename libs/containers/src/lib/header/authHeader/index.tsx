@@ -16,7 +16,7 @@ export const AuthHeader = () => {
             <>
                 <HeaderFrame>
                     <LeftNavHeader />
-                    
+
                     <RightNavHeader />
                 </HeaderFrame>
 

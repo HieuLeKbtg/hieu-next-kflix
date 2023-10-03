@@ -10,17 +10,20 @@ const LeftNavHeader = () => {
     return (
         <HeaderGroup>
             <HeaderLogo
+                data-testid='header-logo'
                 to={AppRoutesWithTempRoutes.HOME}
                 src='assets/images/icons/logo.svg'
                 alt='Netflix'
             />
             <HeaderLink
+                data-testid='header-link-series'
                 $active={pathname === '/series'}
                 href={AppRoutesWithTempRoutes.SERIES}
             >
                 Series
             </HeaderLink>
             <HeaderLink
+                data-testid='header-link-films'
                 $active={pathname === '/films'}
                 href={AppRoutesWithTempRoutes.FILMS}
             >

@@ -40,7 +40,7 @@ const createRouter = (params: Partial<NextRouter>) => ({
 })
 
 const MockNextRouter = ({ children, ...props }: MockNextRouterProps) => {
-    const router = createRouter(props as AppRouterInstance)
+    const router = createRouter(props as unknown)
 
     return (
         <AppRouterContext.Provider value={router}>

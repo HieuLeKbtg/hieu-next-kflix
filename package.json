@@ -10,14 +10,15 @@
         "dev:signin": "npx nx serve signin",
         "dev:signup": "npx nx serve signup",
         "dev": "npx nx run-many --target=serve --projects=homepage,browse,films,series,signin,signup --parallel=6",
-        
-        "test:browse": "npx nx e2e browse --watch",
-        "test:homepage": "npx nx e2e homepage --watch",
-        "test:series": "npx nx e2e series --watch",
-        "test:films": "npx nx e2e films --watch",
-        "test:signin": "npx nx e2e signin --watch",
-        "test:signup": "npx nx e2e signup --watch",
-        "test": "npx nx run-many --target=e2e --projects=homepage,browse,films,series,signin,signup --watch --parallel=6"
+        "e2e:browse": "npx nx e2e browse --watch",
+        "e2e:homepage": "npx nx e2e homepage --watch",
+        "e2e:series": "npx nx e2e series --watch",
+        "e2e:films": "npx nx e2e films --watch",
+        "e2e:signin": "npx nx e2e signin --watch",
+        "e2e:signup": "npx nx e2e signup --watch",
+        "test": "npx nx run-many --target=e2e --projects=homepage,browse,films,series,signin,signup --watch --parallel=6",
+        "component-test:component": "npx nx component-test component --watch",
+        "component-test:containers": "npx nx component-test containers --watch"
     },
     "private": true,
     "dependencies": {
@@ -25,6 +26,7 @@
         "@nx/next": "16.8.1",
         "@swc/helpers": "~0.5.0",
         "babel-plugin-macros": "^3.1.0",
+        "cypress-real-events": "^1.10.3",
         "firebase": "^10.3.0",
         "next": "^13.5.2",
         "next-auth": "^4.23.1",

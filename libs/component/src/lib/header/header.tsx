@@ -258,7 +258,7 @@ export const HeaderPlayButton = styled.button`
 export const Header = (props: {
     src?: string
     bg?: boolean
-    children: JSX.Element
+    children: ReactNode
 }) => {
     const { bg = true, children, ...restProps } = props
     if (bg) {

@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 import SignOutBtn from './SignOutBtn'
 
 describe(SignOutBtn.name, () => {

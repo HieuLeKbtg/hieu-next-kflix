@@ -41,7 +41,7 @@
                 "name": "next"
             }
         ],
-        "types": ["jest", "node", "cypress"]
+        "types": ["jest", "node", "cypress","cypress-real-events"]
     },
     "include": [
         "**/*.ts",

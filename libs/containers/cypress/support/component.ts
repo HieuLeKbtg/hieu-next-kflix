@@ -1,4 +1,3 @@
-import { mount } from 'cypress/react18'
 import './styles.ct.css'
 // ***********************************************************
 // This example support/component.ts is processed and
@@ -14,9 +13,10 @@ import './styles.ct.css'
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-
 // Import commands.ts using ES2015 syntax:
 import './commands'
+
+import { mount } from 'cypress/react18'
 
 // add component testing only related command here, such as mount
 declare global {
