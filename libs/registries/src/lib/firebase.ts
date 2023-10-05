@@ -1,6 +1,7 @@
 import { configEnv } from '@libs/utils'
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { getDatabase } from 'firebase/database'
 
 const config = {
     apiKey: configEnv.FIREBASE_API_KEY,
@@ -9,10 +10,12 @@ const config = {
     storageBucket: configEnv.FIREBASE_STORAGE_BUCKET,
     messagingSenderId: configEnv.FIREBASE_MESSAGING_SENDER_ID,
     appId: configEnv.FIREBASE_APP_ID,
-    measurementId: configEnv.FIREBASE_MEASUREMENT_ID
+    measurementId: configEnv.FIREBASE_MEASUREMENT_ID,
+    databaseURL: configEnv.FIREBASE_REALTIME_DB_URL
 }
 
 const app = getApps().length ? getApp() : initializeApp(config)
 const auth = getAuth()
+const database = getDatabase(app)
 
-export { app, auth }
+export { app, auth, database }

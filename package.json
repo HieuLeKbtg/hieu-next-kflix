@@ -10,6 +10,7 @@
         "dev:signin": "npx nx serve signin",
         "dev:signup": "npx nx serve signup",
         "dev": "npx nx run-many --target=serve --projects=homepage,browse,films,series,signin,signup --parallel=6",
+
         "e2e:browse": "npx nx e2e browse --watch",
         "e2e:homepage": "npx nx e2e homepage --watch",
         "e2e:series": "npx nx e2e series --watch",
@@ -17,6 +18,7 @@
         "e2e:signin": "npx nx e2e signin --watch",
         "e2e:signup": "npx nx e2e signup --watch",
         "test": "npx nx run-many --target=e2e --projects=homepage,browse,films,series,signin,signup --watch --parallel=6",
+        
         "component-test:component": "npx nx component-test component --watch",
         "component-test:containers": "npx nx component-test containers --watch"
     },
