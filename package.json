@@ -9,7 +9,8 @@
         "dev:films": "npx nx serve films",
         "dev:signin": "npx nx serve signin",
         "dev:signup": "npx nx serve signup",
-        "dev": "npx nx run-many --target=serve --projects=homepage,browse,films,series,signin,signup --parallel=6",
+        "dev:realtime-films": "npx nx serve realtime-films",
+        "dev": "npx nx run-many --target=serve --projects=homepage,browse,films,series,signin,signup,realtime-films --parallel=7",
 
         "e2e:browse": "npx nx e2e browse --watch",
         "e2e:homepage": "npx nx e2e homepage --watch",
