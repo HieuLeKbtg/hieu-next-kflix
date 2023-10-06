@@ -6,6 +6,7 @@ import isPropValid from '@emotion/is-prop-valid'
 import { StyledComponentsRegistry } from '@libs/registries'
 import { ReactNode } from 'react'
 import { StyleSheetManager } from 'styled-components'
+import { ModalProvider } from 'styled-react-modal'
 
 import { GlobalStyles } from './globalStyles'
 
@@ -17,10 +18,12 @@ const CustomProvider = (props: CustomProviderProps) => {
     const { children } = props
     return (
         <StyleSheetManager shouldForwardProp={isPropValid}>
-            <StyledComponentsRegistry>
-                <GlobalStyles />
-                {children}
-            </StyledComponentsRegistry>
+            <ModalProvider>
+                <StyledComponentsRegistry>
+                    <GlobalStyles />
+                    {children}
+                </StyledComponentsRegistry>
+            </ModalProvider>
         </StyleSheetManager>
     )
 }

@@ -85,6 +85,7 @@ export const SlideRows = (props: SlideRowsProps) => {
             }
         }
     }
+    console.log('data', data)
 
     const renderList = (data: SearchStates[] | ContentStates[] | []) => {
         return data.map((slideItem) => (

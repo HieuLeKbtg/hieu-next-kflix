@@ -36,6 +36,14 @@ const LeftNavHeader = () => {
             >
                 Realtime Films
             </HeaderLink>
+
+            <HeaderLink
+                data-testid='header-link-dashboard'
+                $active={pathname === '/dashboard'}
+                href={AppRoutesWithTempRoutes.DASHBOARD}
+            >
+                Dashboard
+            </HeaderLink>
         </HeaderGroup>
     )
 }

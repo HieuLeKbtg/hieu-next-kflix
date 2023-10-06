@@ -10,8 +10,8 @@
         "dev:signin": "npx nx serve signin",
         "dev:signup": "npx nx serve signup",
         "dev:realtime-films": "npx nx serve realtime-films",
-        "dev": "npx nx run-many --target=serve --projects=homepage,browse,films,series,signin,signup,realtime-films --parallel=7",
-
+        "dev:dashboard": "npx nx serve dashboard",
+        "dev": "npx nx run-many --target=serve --projects=homepage,browse,films,series,signin,signup,realtime-films,dashboard --parallel=8",
         "e2e:browse": "npx nx e2e browse --watch",
         "e2e:homepage": "npx nx e2e homepage --watch",
         "e2e:series": "npx nx e2e series --watch",
@@ -19,7 +19,6 @@
         "e2e:signin": "npx nx e2e signin --watch",
         "e2e:signup": "npx nx e2e signup --watch",
         "test": "npx nx run-many --target=e2e --projects=homepage,browse,films,series,signin,signup --watch --parallel=6",
-        
         "component-test:component": "npx nx component-test component --watch",
         "component-test:containers": "npx nx component-test containers --watch"
     },
@@ -28,6 +27,7 @@
         "@builder.io/partytown": "^0.8.0",
         "@nx/next": "16.8.1",
         "@swc/helpers": "~0.5.0",
+        "@types/styled-react-modal": "^1.2.3",
         "babel-plugin-macros": "^3.1.0",
         "cypress-real-events": "^1.10.3",
         "firebase": "^10.3.0",
@@ -39,6 +39,7 @@
         "react-is": "18.2.0",
         "server-only": "^0.0.1",
         "styled-components": "^6.0.7",
+        "styled-react-modal": "^3.0.1",
         "stylis": "^4.0.0",
         "tslib": "^2.3.0"
     },
