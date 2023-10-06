@@ -70,9 +70,23 @@ export const FormInput = styled.input`
     line-height: 50px;
     padding: 5px 20px;
     margin-bottom: 20px;
-
+    display: block;
+    width: 45%;
     &:last-of-type {
         margin-bottom: 30px;
+    }
+`
+
+export const FormLabel = styled.label`
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+`
+export const FormSelect = styled.select`
+    width: 100%;
+    height: 200px;
+    option {
+        padding: 10px;
     }
 `
 

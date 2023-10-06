@@ -40,6 +40,7 @@ export const Button = styled.button`
     padding: 0 32px;
     font-size: 26px;
     border: 0;
+    border-radius: 4px;
     cursor: pointer;
 
     img {

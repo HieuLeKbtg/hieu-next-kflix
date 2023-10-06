@@ -18,6 +18,7 @@ const CustomProvider = (props: CustomProviderProps) => {
     const { children } = props
     return (
         <StyleSheetManager shouldForwardProp={isPropValid}>
+            {/* TODO: check types here */}
             <ModalProvider>
                 <StyledComponentsRegistry>
                     <GlobalStyles />
