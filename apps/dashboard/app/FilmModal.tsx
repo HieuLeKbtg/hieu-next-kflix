@@ -9,7 +9,7 @@ import {
     StyledModal
 } from '@libs/component'
 import { FilmStates, Genres } from '@libs/types'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, MouseEvent, useState } from 'react'
 import { ModalProps } from 'styled-react-modal'
 
 type FilmModalProps = Omit<ModalProps, 'isOpen'> & {
@@ -150,8 +150,11 @@ const FilmModal = (props: FilmModalProps) => {
                     name='genres'
                     multiple
                     value={data.genres}
-                    onClick={(e) => {
-                        handleChangeFields(e.target.value, EFilmData.genres)
+                    onClick={(e: MouseEvent<HTMLSelectElement>) => {
+                        handleChangeFields(
+                            (e.target as HTMLInputElement).value,
+                            EFilmData.genres
+                        )
                     }}
                 >
                     {genres.map((genre: Genres) => {

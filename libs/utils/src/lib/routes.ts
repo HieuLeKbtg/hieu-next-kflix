@@ -12,8 +12,7 @@ export enum AppRoutesWithTempRoutes {
     BROWSE = 'http://localhost:4201',
     FILMS = 'http://localhost:4202',
     SERIES = 'http://localhost:4203',
-    REALTIME_FILMS = 'http://localhost:4204',
+    DASHBOARD = 'http://localhost:4204',
     SIGN_IN = 'http://localhost:4205',
-    SIGN_UP = 'http://localhost:4206',
-    DASHBOARD = 'http://localhost:4207'
+    SIGN_UP = 'http://localhost:4206'
 }

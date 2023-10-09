@@ -16,25 +16,19 @@ const LeftNavHeader = () => {
                 alt='Netflix'
             />
             <HeaderLink
-                data-testid='header-link-series'
-                $active={pathname === '/series'}
-                href={AppRoutesWithTempRoutes.SERIES}
-            >
-                Series
-            </HeaderLink>
-            <HeaderLink
                 data-testid='header-link-films'
                 $active={pathname === '/films'}
                 href={AppRoutesWithTempRoutes.FILMS}
             >
                 Films
             </HeaderLink>
+
             <HeaderLink
-                data-testid='header-link-realtime-films'
-                $active={pathname === '/realtime-films'}
-                href={AppRoutesWithTempRoutes.REALTIME_FILMS}
+                data-testid='header-link-series'
+                $active={pathname === '/series'}
+                href={AppRoutesWithTempRoutes.SERIES}
             >
-                Realtime Films
+                Series
             </HeaderLink>
 
             <HeaderLink
