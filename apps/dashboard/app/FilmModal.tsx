@@ -1,20 +1,17 @@
 'use client'
 
-import {
-    Button,
-    FormInput,
-    FormLabel,
-    FormSubmit,
-    StyledModal
-} from '@libs/component'
-import { firebaseServices } from '@libs/services'
-import { FilmStates } from '@libs/types'
-import { ChangeEvent, useState } from 'react'
+import { FormInput, FormLabel, FormSubmit, StyledModal } from '@libs/component'
+import { filmState } from '@libs/types'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { ModalProps } from 'styled-react-modal'
 
 type FilmModalProps = Omit<ModalProps, 'isOpen'> & {
     mode: 'add' | 'edit'
-    filmData?: FilmStates
+    filmData?: filmState | null
+    isOpen: boolean
+    onOpenModal: (isOpen: boolean) => void
+    onAdd?: (data: filmState) => void
+    onEdit?: (data: filmState) => void
 }
 
 enum EFilmData {
@@ -25,10 +22,9 @@ enum EFilmData {
 }
 
 const FilmModal = (props: FilmModalProps) => {
-    const { mode } = props
+    const { mode, filmData, isOpen, onOpenModal, onAdd, onEdit } = props
 
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-    const [data, setData] = useState<Omit<FilmStates, 'genres' | 'id'>>({
+    const [data, setData] = useState<filmState>({
         title: '',
         description: '',
         backdrop_path: '',
@@ -40,91 +36,73 @@ const FilmModal = (props: FilmModalProps) => {
     }
 
     const submitFilm = () => {
-        firebaseServices.addFieldData({ path: 'filmList', data })
+        if (mode === 'add' && onAdd) {
+            onAdd(data)
+        }
+        if (mode === 'edit' && onEdit) {
+            onEdit(data)
+        }
     }
 
-    const closeModal = () => setIsModalOpen(false)
+    const closeModal = () => onOpenModal(false)
 
-    const title = mode === 'add' ? 'New Film' : 'Edit Film'
+    useEffect(() => {
+        if (filmData) {
+            setData(filmData)
+        }
+    }, [filmData])
 
     return (
-        <>
-            <Button
-                onClick={() => setIsModalOpen(true)}
-                style={{
-                    fontSize: '20px',
-                    padding: '16px',
-                    marginLeft: '20px',
-                    height: 'auto',
-                    textTransform: 'none'
+        <StyledModal isOpen={isOpen} onEscapeKeydown={closeModal}>
+            <h1>{mode === 'add' ? 'New Film' : 'Edit Film'}</h1>
+
+            <FormLabel htmlFor='title'>Title</FormLabel>
+            <FormInput
+                name='title'
+                placeholder='Film Title'
+                value={data.title}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    handleChangeFields(e.target.value, EFilmData.title)
                 }}
-            >
-                {title}
-            </Button>
+            />
 
-            <StyledModal isOpen={isModalOpen} onEscapeKeydown={closeModal}>
-                <h1>{title}</h1>
+            <FormLabel htmlFor='Description'>Description</FormLabel>
+            <FormInput
+                name='Description'
+                placeholder='Film Description'
+                value={data.description}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    handleChangeFields(e.target.value, EFilmData.description)
+                }}
+            />
 
-                <FormLabel htmlFor='title'>Title</FormLabel>
-                <FormInput
-                    name='title'
-                    placeholder='Film Title'
-                    value={data.title}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        handleChangeFields(e.target.value, EFilmData.title)
-                    }}
-                />
+            <FormLabel htmlFor='poster_path'>Poster Path</FormLabel>
+            <FormInput
+                name='poster_path'
+                placeholder='Film Poster Path'
+                value={data.poster_path}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    handleChangeFields(e.target.value, EFilmData.poster_path)
+                }}
+            />
 
-                <FormLabel htmlFor='Description'>Description</FormLabel>
-                <FormInput
-                    name='Description'
-                    placeholder='Film Description'
-                    value={data.description}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        handleChangeFields(
-                            e.target.value,
-                            EFilmData.description
-                        )
-                    }}
-                />
+            <FormLabel htmlFor='backdrop_path'>Backdrop Path</FormLabel>
+            <FormInput
+                name='backdrop_path'
+                placeholder='Film Backdrop Path'
+                value={data.backdrop_path}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    handleChangeFields(e.target.value, EFilmData.backdrop_path)
+                }}
+            />
 
-                <FormLabel htmlFor='poster_path'>Poster Path</FormLabel>
-                <FormInput
-                    name='poster_path'
-                    placeholder='Film Poster Path'
-                    value={data.poster_path}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        handleChangeFields(
-                            e.target.value,
-                            EFilmData.poster_path
-                        )
-                    }}
-                />
-
-                <FormLabel htmlFor='backdrop_path'>Backdrop Path</FormLabel>
-                <FormInput
-                    name='backdrop_path'
-                    placeholder='Film Backdrop Path'
-                    value={data.backdrop_path}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        handleChangeFields(
-                            e.target.value,
-                            EFilmData.backdrop_path
-                        )
-                    }}
-                />
-
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <FormSubmit
-                        onClick={closeModal}
-                        style={{ marginRight: '5px' }}
-                    >
-                        Close
-                    </FormSubmit>
-                    <FormSubmit onClick={submitFilm}>Submit</FormSubmit>
-                </div>
-            </StyledModal>
-        </>
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <FormSubmit onClick={closeModal} style={{ marginRight: '5px' }}>
+                    Close
+                </FormSubmit>
+                <FormSubmit onClick={submitFilm}>Submit</FormSubmit>
+            </div>
+        </StyledModal>
     )
 }
 

@@ -1,4 +1,5 @@
 export * from './configs'
+export * from './dashboard'
 export * from './films'
 export * from './general'
 export * from './genres'

@@ -1,5 +1,13 @@
 import { db } from '@libs/registries'
-import { onValue, push, ref, set, Unsubscribe } from 'firebase/database'
+import {
+    onValue,
+    push,
+    ref,
+    remove,
+    set,
+    Unsubscribe,
+    update
+} from 'firebase/database'
 
 type GetFieldParams<T> = {
     path: string
@@ -11,6 +19,21 @@ type PostFieldParams<T> = {
     data: T
     callback?: () => void
 }
+
+type EditFieldsParams<T> = Pick<PostFieldParams<T>, 'path' | 'callback'> & {
+    data: object
+}
+
+type DeleteFieldsParams = { path: string; callback?: () => void }
+
+/**
+ * In general:
+ * onValue: listen data from firebase, will be triggered when having changes
+ * push: add to a list of data, everytime we push a new node to firebase, db will automatically generate a unique key
+ * set: write or replace data with a defined path
+ * update: edit data with a defined path
+ * references: https://firebase.google.com/docs/database/admin/save-data
+ */
 
 class FirebaseServices {
     private databaseRef = ref(db)
@@ -42,13 +65,49 @@ class FirebaseServices {
         })
     }
 
-    public async addFieldData<T>(params: PostFieldParams<T>) {
+    public addFieldData<T>(params: PostFieldParams<T>) {
         const { path, data, callback } = params
         const fieldRef = ref(db, path)
         const newRef = push(fieldRef)
         set(newRef, data)
             .then(() => {
                 // Data saved successfully!
+                // Do something here if needed!!
+                if (callback) {
+                    callback()
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    public EditFieldData<T>(params: EditFieldsParams<T>) {
+        const { path, data, callback } = params
+        const fieldRef = ref(db, path)
+
+        // there is another way to write codes to update if we would like to update in multiple places
+        // please refer to official docs: https://firebase.google.com/docs/database/web/read-and-write#update_specific_fields
+        update(fieldRef, data)
+            .then(() => {
+                //  updated data successfully!
+                // Do something here if needed!!
+                if (callback) {
+                    callback()
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    public DeleteFieldData(params: DeleteFieldsParams) {
+        const { path, callback } = params
+        const fieldRef = ref(db, path)
+
+        remove(fieldRef)
+            .then(() => {
+                //  updated data successfully!
                 // Do something here if needed!!
                 if (callback) {
                     callback()

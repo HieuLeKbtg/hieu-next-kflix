@@ -1,14 +1,14 @@
 import { AuthHeader, MainFooter } from '@libs/containers'
 
+import AddFilmModal from './AddFilmModal'
 import FilmListDataTable from './FilmListDataTable'
-import FilmModal from './FilmModal'
 
-const Dashboard = async () => {
+const Dashboard = () => {
     return (
         <>
             <AuthHeader />
 
-            <FilmModal mode='add' />
+            <AddFilmModal />
 
             <FilmListDataTable />
 
