@@ -16,6 +16,6 @@ const config = {
 
 const app = getApps().length ? getApp() : initializeApp(config)
 const auth = getAuth()
-const database = getDatabase(app)
+const db = getDatabase(app)
 
-export { app, auth, database }
+export { app, auth, db }
