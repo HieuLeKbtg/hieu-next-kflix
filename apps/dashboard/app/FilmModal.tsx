@@ -21,15 +21,17 @@ enum EFilmData {
     poster_path = 'poster_path'
 }
 
+const DEFAULT_DATA = {
+    title: '',
+    description: '',
+    backdrop_path: '',
+    poster_path: ''
+}
+
 const FilmModal = (props: FilmModalProps) => {
     const { mode, filmData, isOpen, onOpenModal, onAdd, onEdit } = props
 
-    const [data, setData] = useState<filmState>({
-        title: '',
-        description: '',
-        backdrop_path: '',
-        poster_path: ''
-    })
+    const [data, setData] = useState<filmState>(DEFAULT_DATA)
 
     const handleChangeFields = (value: string, type: EFilmData) => {
         setData({ ...data, [type]: value })
@@ -45,6 +47,12 @@ const FilmModal = (props: FilmModalProps) => {
     }
 
     const closeModal = () => onOpenModal(false)
+
+    useEffect(() => {
+        if (!isOpen) {
+            setData(DEFAULT_DATA)
+        }
+    }, [isOpen])
 
     useEffect(() => {
         if (filmData) {

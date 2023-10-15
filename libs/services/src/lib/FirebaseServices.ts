@@ -59,9 +59,7 @@ class FirebaseServices {
 
         const fieldRef = ref(db, path)
         onValue(fieldRef, (snapshot) => {
-            if (snapshot.exists()) {
-                callback(snapshot.val())
-            }
+            callback(snapshot.exists() ? snapshot.val() : {})
         })
     }
 

@@ -71,7 +71,7 @@ export const FormInput = styled.input`
     padding: 5px 20px;
     margin-bottom: 20px;
     display: block;
-    width: 45%;
+    width: 100%;
     &:last-of-type {
         margin-bottom: 30px;
     }
