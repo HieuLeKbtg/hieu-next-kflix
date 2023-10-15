@@ -20,6 +20,7 @@ describe('Left Navigation Header', () => {
             .should('be.visible')
             .should('have.css', 'color', 'rgb(255, 255, 255)')
             .should('have.attr', 'href', AppRoutesWithTempRoutes.SERIES)
+            .should('have.text', 'Series')
 
         // TODO: re-check cypress-real-events for testing hover action
         // cy.get('[data-testid="header-link-series"]')
@@ -32,5 +33,14 @@ describe('Left Navigation Header', () => {
             .should('be.visible')
             .should('have.css', 'color', 'rgb(255, 255, 255)')
             .should('have.attr', 'href', AppRoutesWithTempRoutes.FILMS)
+            .should('have.text', 'Films')
+    })
+
+    it('render Dashboard link', () => {
+        cy.get('[data-testid="header-link-dashboard"]')
+            .should('be.visible')
+            .should('have.css', 'color', 'rgb(255, 255, 255)')
+            .should('have.attr', 'href', AppRoutesWithTempRoutes.DASHBOARD)
+            .should('have.text', 'Dashboard')
     })
 })

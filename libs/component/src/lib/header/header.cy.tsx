@@ -1,59 +1,19 @@
-import {
-    AppRouterContext,
-    AppRouterInstance
-} from 'next/dist/shared/lib/app-router-context.shared-runtime'
-import { NextRouter } from 'next/router'
-import { ReactNode } from 'react'
-
+import { MockNextRouter } from '../../../cypress/support/router.cy'
 import { HeaderSearch } from './header'
 
-interface MockNextRouterProps extends Partial<AppRouterInstance> {
-    children: ReactNode
-}
+describe('Auth Header Initialize', () => {
+    let searchTermKeyword = ''
+    const setSearchTerm = (value: string) => {
+        searchTermKeyword = value
+    }
 
-const createRouter = (params: Partial<NextRouter>) => ({
-    route: '/',
-    pathname: '/',
-    query: {},
-    asPath: '/',
-    basePath: '',
-    back: cy.spy().as('back'),
-    refresh: cy.spy().as('refresh'),
-    beforePopState: cy.spy().as('beforePopState'),
-    forward: cy.spy().as('forward'), // <---------- added `forward`
-    prefetch: cy.stub().as('prefetch').resolves(),
-    push: cy.spy().as('push'),
-    reload: cy.spy().as('reload'),
-    replace: cy.spy().as('replace'),
-    events: {
-        emit: cy.spy().as('emit'),
-        off: cy.spy().as('off'),
-        on: cy.spy().as('on')
-    },
-    isFallback: false,
-    isLocaleDomain: false,
-    isReady: true,
-    defaultLocale: 'en',
-    domainLocales: [],
-    isPreview: false,
-    ...params
-})
-
-const MockNextRouter = ({ children, ...props }: MockNextRouterProps) => {
-    const router = createRouter(props as unknown)
-
-    return (
-        <AppRouterContext.Provider value={router}>
-            {children}
-        </AppRouterContext.Provider>
-    )
-}
-
-describe('Auth Header', () => {
     beforeEach(() =>
         cy.mount(
             <MockNextRouter>
-                <HeaderSearch searchTerm='' onSetSearchTerm={() => {}} />
+                <HeaderSearch
+                    searchTerm={searchTermKeyword}
+                    onSetSearchTerm={setSearchTerm}
+                />
             </MockNextRouter>
         )
     )
@@ -82,3 +42,5 @@ describe('Auth Header', () => {
         // cy.location('search').should('include', 'search=topgun')
     })
 })
+
+describe('Auth Header Interaction', () => {})
